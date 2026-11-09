@@ -1,0 +1,32 @@
+SmartHostel — Professional UI / Hardening Verification
+
+SOURCE-LEVEL AUDIT COMPLETED
+- Python application syntax parses successfully.
+- All HTML/Jinja templates parse successfully.
+- Every detected POST form contains a CSRF token.
+- State-changing routes use role guards and the global CSRF middleware; Razorpay webhook is the intentional signature-verified exception.
+- Fees use database-backed monthly uniqueness and transaction locking.
+- Fee status is derived from non-voided payments and due dates.
+- Overpayments and zero/negative payments are rejected.
+- New collections are restricted to active students.
+- One-time bills cannot be created with a billing month, preventing accidental monthly classification.
+- UPI/Bank Transfer/Card manual collections require a transaction/reference number.
+- Payments are never hard-deleted; admin corrections are voids with a required reason.
+- Printable payment receipts were added.
+- Monthly fee changes are historical records and do not rewrite issued bills.
+- Leave requests, gate passes and complaints now use soft-delete/archive behavior instead of destructive deletion.
+- Active fee views exclude checked-out/transferred/inactive students.
+- Fresh database setup is non-destructive; RESET_DATABASE.sql is separated as an explicit destructive operation.
+- Responsive finance UI was enhanced with compact collection controls, receipt styling and print layout.
+
+AUTOMATED CHECKS
+- test_hardening.py: PASS
+- smoke_test.py: PASS
+- Jinja template parse: PASS
+- app.py AST parse: PASS
+
+NOT CLAIMED
+A live MySQL/Razorpay integration test was not possible in this build environment because no project MySQL server was available. After installation, run test_db.py and open /health before entering real financial data.
+
+DATA SAFETY
+Keep the old database/export until the new installation has been verified. A fresh schema does not automatically contain old records.

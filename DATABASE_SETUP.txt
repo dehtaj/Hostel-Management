@@ -1,0 +1,18 @@
+SMART HOSTEL — DATABASE SETUP
+
+SAFE NEW-DATABASE WORKFLOW
+
+1. In MySQL Workbench, export/backup any existing SmartHostel database you need to preserve.
+2. Create a NEW empty database, for example `smarthostel_management_new`.
+3. Open `FRESH_DATABASE.sql` in MySQL Workbench.
+4. Change the `CREATE DATABASE` / `USE` name to the new database if you are keeping the old `smarthostel_management`.
+5. Execute the file once.
+6. Set the same DB_NAME in `.env`.
+7. Run `python test_db.py`.
+
+FRESH_DATABASE.sql does NOT drop or erase an existing database.
+
+RESET_DATABASE.sql is intentionally separate and destructive. Do not execute it unless you have a verified backup and deliberately want a reset.
+
+IMPORTANT:
+This package does not pretend that an empty fresh schema contains your old records. If old students/payments/etc. must be retained, perform a verified data migration before retiring the old database.

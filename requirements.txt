@@ -1,0 +1,6 @@
+Flask==3.0.3
+mysql-connector-python==8.4.0
+Werkzeug==3.0.3
+python-dotenv==1.0.1
+razorpay==1.4.2
+setuptools<81

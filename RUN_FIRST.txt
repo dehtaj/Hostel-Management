@@ -1,0 +1,27 @@
+SMART HOSTEL — FINAL RUN ORDER
+
+1. Keep any old database untouched and export a backup in MySQL Workbench.
+2. Create a NEW empty database for this release.
+3. Execute FRESH_DATABASE.sql once in MySQL Workbench against that new database.
+4. Copy .env.example to .env and set the real DB password, DB_NAME and a private SECRET_KEY.
+5. Match DB_PORT to MySQL Workbench (`SELECT @@port;`).
+6. In VS Code terminal:
+   python -m pip install -r requirements.txt
+7. Run:
+   python test_db.py
+   python test_hardening.py
+   python smoke_test.py
+8. Start:
+   python app.py
+9. Open:
+   http://127.0.0.1:5000/setup
+
+NEVER run RESET_DATABASE.sql unless you intentionally want to destroy/reset a database.
+
+Finance safety:
+- Monthly bills are duplicate-safe.
+- One-time bills cannot accidentally become monthly bills.
+- Active-student collections reject checked-out/transferred students.
+- UPI/bank/card payments require a reference number.
+- Payment corrections are admin-only voids with reasons.
+- Receipts can be printed.
